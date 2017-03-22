@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "Config.h"
-#import "APIClient.h"
 #import "User+CoreDataClass.h"
 #import "AWSCognitoIdentityProvider.h"
 #import "OutfitTableViewCell.h"

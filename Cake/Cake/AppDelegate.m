@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [ConfigManager sharedManager].environmentMode = EnvironmentModeStaging;
-    [APIClient sharedClient];
+    //[APIClient sharedClient];
     [[IQKeyboardManager sharedManager] setEnable:NO];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
 
