@@ -21,10 +21,10 @@ const static NSUInteger ddLogLevel = DDLogLevelAll;
 #define isiOS7 isMiniOS(7)
 #define isiOS8 isMiniOS(8)
 
-/* KUMULOS CONSTANTS */
-static NSString * const kKumulosKey = @"3b36ece64b64dc08c8b9b794b41e880c8d047764687d4c7e8d659d7d72679738";
-static NSString * const kKumulosAPIKey = @"ed302643-c5b3-4e00-b0c0-b5f0a65bd5b8";
-static NSString * const kKumulosKeySecret = @"tTogaY2ja91XGILNIUBizRixfCYMaQ2dYz6W";
+/* AWS CONSTANTS */
+static NSString * const kAWSClientId        = @"j3ja9aj00dsi9e60orniu0tfc";
+static NSString * const kAWSClientSecret    = @"1suu92kllhvqgllih82th6d416tipaiahkue7vkj3evn4mueab9b";
+static NSString * const kUserPoolId         = @"layers_userpoolapp_MOBILEHUB_917269795";
 
 /* FONT CONSTANTS */
 static NSString *const kDefaultFont = @"Avenir-Roman";
@@ -46,39 +46,10 @@ static double const kFifteenPercent = 0.15;
 static double const kTwentyPercent = 0.20;
 
 /* SEGUE CONSTANTS */
-static NSString *const kSegueFeedback = @"FeedbackSegue";
-static NSString *const kSegueProfileInformation = @"ProfileInformationSegue";
-static NSString *const kSegueAbout = @"AboutSegue";
-static NSString *const kSeguePassword  = @"PasswordSegue";
 static NSString *const kLoginSegue = @"LoginSegue";
-static NSString *const kLogoutSegue = @"LogoutSegue";
-static NSString *const kLogoutSegueNoAnimation = @"LogoutSegueNoAnimation";
-static NSString *const kMenuItemSegue = @"MenuItemSegue";
-static NSString *const kOrderReviewSegue = @"orderReviewSegue";
-static NSString *const kOrderDetailSegue = @"OrderDetailsSegue";
-static NSString *const kAddToBasketSegue = @"addToBasketSegue";
-static NSString *const kMenuSegue = @"menuSegue";
-static NSString *const kMerchantDetailSegue = @"merchantDetailSegue";
-static NSString *const kAddNewAddressSegue = @"addNewAddressSegue";
-static NSString *const kViewSavedAddressesSegue = @"viewSavedAddressesSegue";
-static NSString *const kViewSavedCreditCardsSegue = @"viewSavedCreditCardsSegue";
-static NSString *const kAddFriendFromContactsSegue = @"AddContactSegue";
-static NSString *const kAddFriendFromFacebookSegue = @"FacebookFriendSegue";
-static NSString *const kAddFriendManuallySegue = @"addFriendManuallySegue";
-static NSString *const kSelectFriendsSegue = @"selectFriendsSegue";
-static NSString *const kGoToExploreSegue = @"goToExploreSegue";
-static NSString *const kGoToMenuSegue = @"goToMenuSegue";
-static NSString *const kGoToFriendsSegue = @"goToFriendsSegue";
-static NSString *const kGoToOrderCheckoutPushSegue = @"goToOrderCheckoutPushSegue";
-static NSString *const kGoToPaymentSplitMethodSegue = @"goToPaymentSplitMethodSegue";
-static NSString *const kLoginViewControllerSegue = @"LoginViewControllerSegue";
-static NSString *const kOrganizationSegue = @"OrganizationSegue";
-static NSString *const kGuestLoginViewControllerSegue = @"GuestLoginViewControllerSegue";
 static NSString *const kCreateAccountSegue = @"CreateAccountSegue";
-static NSString *const kStoryboardMain = @"Main";
-static NSString *const kSelectPaymentSegue = @"changePaymentSegue";
-static NSString *const kResetPasswordSegue = @"ResetPasswordSegue";
-static NSString *const kSegueToLogin =  @"SegueToLoginFromDeepLink";
+static NSString *const kForgotSegue = @"ForgotSegue";
+
 
 /* MERCHANT SEARCH PARAMETERS */
 static NSString *const kMerchantSearchQuery = @"q";

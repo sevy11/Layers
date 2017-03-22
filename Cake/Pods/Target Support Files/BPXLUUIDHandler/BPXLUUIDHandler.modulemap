@@ -1,0 +1,6 @@
+framework module BPXLUUIDHandler {
+  umbrella header "BPXLUUIDHandler-umbrella.h"
+
+  export *
+  module * { export * }
+}
