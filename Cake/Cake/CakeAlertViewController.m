@@ -23,9 +23,9 @@
         self.cancelButtonTitleFont = [UIFont fontWithName:kDefaultFont size:13.0];
         self.swipeDismissalGestureEnabled = YES;
         self.backgroundTapDismissalGestureEnabled = YES;
-        self.alertViewBackgroundColor = UIColorFromRGB(ColorValueMTDBackgroundRed);
-        self.titleColor = [UIColor whiteColor];
-        self.messageColor = [UIColor whiteColor];
+        self.alertViewBackgroundColor = UIColorFromRGB(ColorValueUCLABlue);
+        self.titleColor = [UIColor blackColor];
+        self.messageColor = [UIColor blackColor];
         self.buttonColor = [UIColor whiteColor];
         self.buttonTitleColor = [UIColor blackColor];
         self.cancelButtonColor = [UIColor whiteColor];

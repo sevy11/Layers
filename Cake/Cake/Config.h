@@ -49,15 +49,7 @@ static double const kTwentyPercent = 0.20;
 static NSString *const kLoginSegue = @"LoginSegue";
 static NSString *const kCreateAccountSegue = @"CreateAccountSegue";
 static NSString *const kForgotSegue = @"ForgotSegue";
-
-
-/* MERCHANT SEARCH PARAMETERS */
-static NSString *const kMerchantSearchQuery = @"q";
-static NSString *const kMerchantSearchMenuOptions = @"menu_options";
-static NSString *const kMerchantSearchLocationLat = @"lat";
-static NSString *const kMerchantSearchLocationLon = @"lon";
-static NSString *const kMerchantSearchUserRadius = @"user_radius";
-static NSString *const kMerchantSearchIsPartner = @"is_partner";
+static NSString *const kVerifySegue = @"VerifySegue";
 
 /* STORYBOARD NAME CONSTANTS */
 static NSString *const kOrderViewController = @"MyOrdersViewController";
@@ -70,33 +62,6 @@ static NSString *const kDiscoverViewController = @"DiscoverViewController";
 static NSString *const kUserLoggedInNotification = @"userLoggedInNotification";
 static NSString *const kUserLoggedOutNotification = @"userLoggedOutNotification";
 static NSString *const kMerchantsWillNeedUpdateAfterItemAdded = @"merchantsWillNeedUpdateAfterItemAdded";
-static NSString *const kMerchantMenuSegueNotificationFromDeepLink = @"merchantSegueToMenuFromBranchLink";
-static NSString *const kInvitedToBasketFromDeepLink = @"invitedToBasketFromBranchLink";
-static NSString *const kUserPetitionedForMerchant = @"userPetitionedForMerchant";
-static NSString *const kUserPlacedOrderNotification = @"userPlacedOrderNotification";
-static NSString *const kItemAddedToBasketNotification = @"itemAddedToBasketNotification";
-static NSString *const kBasketDeletedInMyOrders = @"basketDeletedInMyOrders";
-static NSString *const kBasketInviteAcceptedNotification = @"basketInviteAccepted";
-static NSString *const kAllItemsInBasketDeleted = @"allItemsInBasketDeleted";
-static NSString *const kItemAddedToBasketWhenMenuAppearForFirstTimeNotification = @"ItemAddedToBasketWhenMenuAppearForFirstTimeNotification";
-static NSString *const kMenuItemAddedWhenPresentedFromMyOrdersNotification = @"MenuItemAddedWhenPresentedFromMyOrdersNotification";
-static NSString *const kMenuViewNeedsToDismissNotification = @"menuViewNeedsTODismissNotification";
-static NSString *const kMenuItemUpdatedNotification = @"menuItemUpdatedNotification";
-static NSString *const kNewAddressAddedNotification = @"newAddressAddedNotification";
-static NSString *const kAddressUpdatedNotification = @"addressUpdatedNotification";
-static NSString *const kAddressWasSelectedFromOrderReviewNotification = @"addressWasSelectedFromOrderReviewNotification";
-static NSString *const kOrderCheckoutNeedsToContinueCheckoutFlowNotification = @"orderCheckoutNeedsToContinueCheckoutFlowNotification";
-static NSString *const kPaymentMethodForOrderChangedNotification = @"paymentMethodForOrderChangedNotification";
-static NSString *const kCreditCardWasChosenFromOrderReviewNotification = @"CreditCardWasChosenFromOrderReviewNotification";
-static NSString *const kPickupMethodWasChanagedInOrderReviewNotification = @"pickupMethodWasChanagedInOrderReviewNotification";
-static NSString *const kOnlyDeliveryAddressWasChangedNotification = @"onlyDeliveryAddressWasChangedNotification";
-static NSString *const kOnlyCreditCardWasChangedNotification = @"onlyCreditCardWasChangedNotification";
-static NSString *const kFriendsWasUpdatedNotification = @"friendsWasUpdatedNotification";
-static NSString *const kGroupBasketWasCreatedNotification = @"groupBasketWasCreatedNotification";
-static NSString *const kUserInGroupOrderPayedForTheirPartNotification = @"UserInGroupOrderPayedForTheirPartNotification";
-static NSString *const kBasketUpdatedNotification = @"basketUpdatedNotification";
-static NSString *const kUserChangedEmailConfirmedNotification = @"UserChangedEmailConfirmedNotification";
-static NSString *const kUserChangedEmailVerifiedNotification = @"UserChangedEmailVerifiedNotification";
 
 /* DEEP LINK CONSTANTS */
 static NSString *const kLinkScheme = @"mytown";
@@ -214,6 +179,8 @@ typedef NS_ENUM(NSUInteger, ViewControllerId) {
 
 /* COLOR VALUE ENUM */
 typedef NS_ENUM(NSUInteger, ColorValue) {
+    ColorValueUCLABlue          = 0x3284BF,
+    ColorValueUCLAYellow        = 0xffb300,
     ColorValueDefaultTabbar     = 0x212121,
     ColorValueDefaultTabbarTint = 0xffffff,
     ColorValueDefaultBackground = 0xeeeeee,

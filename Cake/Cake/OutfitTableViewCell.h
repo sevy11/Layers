@@ -10,4 +10,8 @@
 
 @interface OutfitTableViewCell : CakeAbstractTableViewCell
 
++ (CGFloat)height;
+
 @end
+
+

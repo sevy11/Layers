@@ -6,7 +6,7 @@
 //  Copyright © 2017 Michael Sevy. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
-
+/*
 #import "User+CoreDataClass.h"
 #import <Restkit/CoreData.h>
 
@@ -129,5 +129,5 @@ static User *_currentUser = nil;
     }
     return fullname;
 }
-
-@end
+*/
+//@end

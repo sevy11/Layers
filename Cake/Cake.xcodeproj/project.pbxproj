@@ -31,7 +31,11 @@
 		26A5EC421E6FBFBD00FDA52F /* KeyValueMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC411E6FBFBD00FDA52F /* KeyValueMapper.m */; };
 		26A5EC451E6FC0CA00FDA52F /* CakeAbstractTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC441E6FC0CA00FDA52F /* CakeAbstractTableViewCell.m */; };
 		26A5EC481E6FC12200FDA52F /* HourDayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC471E6FC12200FDA52F /* HourDayTableViewCell.m */; };
+		26A613FB1E834EF9005A6AAA /* SignUpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A613FA1E834EF9005A6AAA /* SignUpTableViewController.m */; };
+		26A613FE1E837CDB005A6AAA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A613FD1E837CDB005A6AAA /* User.m */; };
 		26E9BE5A1E81696B00FC69F0 /* LoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9BE591E81696B00FC69F0 /* LoginTableViewController.m */; };
+		26F288091E90223100BC6188 /* VerificationCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F288081E90223100BC6188 /* VerificationCodeTableViewController.m */; };
+		26F2880D1E914D1400BC6188 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F2880C1E914D1400BC6188 /* UserManager.m */; };
 		3D0EDA2F59C652105017A33E /* Pods_Cake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECEF29D3413BBA2F129D9E26 /* Pods_Cake.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,8 +118,16 @@
 		26A5EC441E6FC0CA00FDA52F /* CakeAbstractTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CakeAbstractTableViewCell.m; sourceTree = "<group>"; };
 		26A5EC461E6FC12200FDA52F /* HourDayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HourDayTableViewCell.h; sourceTree = "<group>"; };
 		26A5EC471E6FC12200FDA52F /* HourDayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HourDayTableViewCell.m; sourceTree = "<group>"; };
+		26A613F91E834EF9005A6AAA /* SignUpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpTableViewController.h; sourceTree = "<group>"; };
+		26A613FA1E834EF9005A6AAA /* SignUpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableViewController.m; sourceTree = "<group>"; };
+		26A613FC1E837CDB005A6AAA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		26A613FD1E837CDB005A6AAA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		26E9BE581E81696B00FC69F0 /* LoginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableViewController.h; sourceTree = "<group>"; };
 		26E9BE591E81696B00FC69F0 /* LoginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableViewController.m; sourceTree = "<group>"; };
+		26F288071E90223100BC6188 /* VerificationCodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeTableViewController.h; sourceTree = "<group>"; };
+		26F288081E90223100BC6188 /* VerificationCodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeTableViewController.m; sourceTree = "<group>"; };
+		26F2880B1E914D1400BC6188 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		26F2880C1E914D1400BC6188 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		3DB3E7600D083F4558DB5238 /* Pods-Cake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cake.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cake/Pods-Cake.release.xcconfig"; sourceTree = "<group>"; };
 		91DB68A5259B740E772D60DE /* Pods-Cake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cake/Pods-Cake.debug.xcconfig"; sourceTree = "<group>"; };
 		ECEF29D3413BBA2F129D9E26 /* Pods_Cake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +235,8 @@
 				266E2A581E6CE9BE00E33929 /* APIClient.m */,
 				266E2A5D1E6CEBE000E33929 /* ConfigManager.h */,
 				266E2A5E1E6CEBE000E33929 /* ConfigManager.m */,
+				26F2880B1E914D1400BC6188 /* UserManager.h */,
+				26F2880C1E914D1400BC6188 /* UserManager.m */,
 			);
 			name = Singleton;
 			sourceTree = "<group>";
@@ -232,8 +246,7 @@
 			children = (
 				266E2A2A1E6CE89C00E33929 /* ViewController.h */,
 				266E2A2B1E6CE89C00E33929 /* ViewController.m */,
-				26E9BE581E81696B00FC69F0 /* LoginTableViewController.h */,
-				26E9BE591E81696B00FC69F0 /* LoginTableViewController.m */,
+				26F2880A1E90223B00BC6188 /* LoginFlow */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -251,6 +264,8 @@
 				266E2A731E6D0F2C00E33929 /* User+CoreDataProperties.h */,
 				266E2A741E6D0F2C00E33929 /* User+CoreDataProperties.m */,
 				266E2A851E6D18B000E33929 /* ExtendedError.h */,
+				26A613FC1E837CDB005A6AAA /* User.h */,
+				26A613FD1E837CDB005A6AAA /* User.m */,
 				266E2A861E6D18B000E33929 /* ExtendedError.m */,
 			);
 			name = Model;
@@ -308,6 +323,19 @@
 				26A5EC411E6FBFBD00FDA52F /* KeyValueMapper.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		26F2880A1E90223B00BC6188 /* LoginFlow */ = {
+			isa = PBXGroup;
+			children = (
+				26E9BE581E81696B00FC69F0 /* LoginTableViewController.h */,
+				26E9BE591E81696B00FC69F0 /* LoginTableViewController.m */,
+				26A613F91E834EF9005A6AAA /* SignUpTableViewController.h */,
+				26A613FA1E834EF9005A6AAA /* SignUpTableViewController.m */,
+				26F288071E90223100BC6188 /* VerificationCodeTableViewController.h */,
+				26F288081E90223100BC6188 /* VerificationCodeTableViewController.m */,
+			);
+			name = LoginFlow;
 			sourceTree = "<group>";
 		};
 		54E72DA387CACC47D0AEEFC7 /* Frameworks */ = {
@@ -522,12 +550,16 @@
 				266E2A5F1E6CEBE000E33929 /* ConfigManager.m in Sources */,
 				26A5EC3C1E6FBE6900FDA52F /* UIViewController+Alert.m in Sources */,
 				26A5EC3F1E6FBF4200FDA52F /* UIViewController+CoreData.m in Sources */,
+				26A613FE1E837CDB005A6AAA /* User.m in Sources */,
 				266E2A2C1E6CE89C00E33929 /* ViewController.m in Sources */,
 				266E2A291E6CE89C00E33929 /* AppDelegate.m in Sources */,
 				266E2A791E6D0F2C00E33929 /* User+CoreDataClass.m in Sources */,
+				26F2880D1E914D1400BC6188 /* UserManager.m in Sources */,
 				266E2A871E6D18B000E33929 /* ExtendedError.m in Sources */,
 				266E2A7C1E6D0F2C00E33929 /* BaseAbstractModel+CoreDataProperties.m in Sources */,
+				26F288091E90223100BC6188 /* VerificationCodeTableViewController.m in Sources */,
 				266E2A261E6CE89C00E33929 /* main.m in Sources */,
+				26A613FB1E834EF9005A6AAA /* SignUpTableViewController.m in Sources */,
 				266E2A7B1E6D0F2C00E33929 /* BaseAbstractModel+CoreDataClass.m in Sources */,
 				266E2A591E6CE9BE00E33929 /* APIClient.m in Sources */,
 				26A5EC451E6FC0CA00FDA52F /* CakeAbstractTableViewCell.m in Sources */,
