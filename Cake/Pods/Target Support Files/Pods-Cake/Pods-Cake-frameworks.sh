@@ -16,7 +16,7 @@ install_framework()
     local source="$1"
   fi
 
-  local destination="${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+  local destination="${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
 
   if [ -L "${source}" ]; then
       echo "Symlinked..."
@@ -59,8 +59,13 @@ code_sign_if_enabled() {
   if [ -n "${EXPANDED_CODE_SIGN_IDENTITY}" -a "${CODE_SIGNING_REQUIRED}" != "NO" -a "${CODE_SIGNING_ALLOWED}" != "NO" ]; then
     # Use the current code_sign_identitiy
     echo "Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}"
-    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements \"$1\""
-    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements "$1"
+    local code_sign_cmd="/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements '$1'"
+
+    if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
+      code_sign_cmd="$code_sign_cmd &"
+    fi
+    echo "$code_sign_cmd"
+    eval "$code_sign_cmd"
   fi
 }
 
@@ -84,52 +89,35 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-Cake/AWSCognito.framework"
-  install_framework "Pods-Cake/AWSCognitoIdentityProvider.framework"
-  install_framework "Pods-Cake/AWSCore.framework"
-  install_framework "Pods-Cake/AWSDynamoDB.framework"
-  install_framework "Pods-Cake/BPXLUUIDHandler.framework"
-  install_framework "Pods-Cake/CocoaLumberjack.framework"
-  install_framework "Pods-Cake/IQKeyboardManager.framework"
-  install_framework "Pods-Cake/ISO8601DateFormatterValueTransformer.framework"
-  install_framework "Pods-Cake/JGActionSheet.framework"
-  install_framework "Pods-Cake/JVFloatLabeledTextField.framework"
-  install_framework "Pods-Cake/MBProgressHUD.framework"
-  install_framework "Pods-Cake/MGSwipeTableCell.framework"
-  install_framework "Pods-Cake/NYAlertViewController.framework"
-  install_framework "Pods-Cake/RESideMenu.framework"
-  install_framework "Pods-Cake/RKCLLocationValueTransformer.framework"
-  install_framework "Pods-Cake/RKValueTransformers.framework"
-  install_framework "Pods-Cake/RestKit.framework"
-  install_framework "Pods-Cake/SOCKit.framework"
-  install_framework "Pods-Cake/TransitionKit.framework"
-  install_framework "Pods-Cake/UITextField_Shake.framework"
-  install_framework "Pods-Cake/YYCache.framework"
-  install_framework "Pods-Cake/YYImage.framework"
-  install_framework "Pods-Cake/YYWebImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCore/AWSCore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManager/IQKeyboardManager.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JGActionSheet/JGActionSheet.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JVFloatLabeledTextField/JVFloatLabeledTextField.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MGSwipeTableCell/MGSwipeTableCell.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NYAlertViewController/NYAlertViewController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RESideMenu/RESideMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UITextField+Shake/UITextField_Shake.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYCache/YYCache.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYImage/YYImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYWebImage/YYWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-Cake/AWSCognito.framework"
-  install_framework "Pods-Cake/AWSCognitoIdentityProvider.framework"
-  install_framework "Pods-Cake/AWSCore.framework"
-  install_framework "Pods-Cake/AWSDynamoDB.framework"
-  install_framework "Pods-Cake/BPXLUUIDHandler.framework"
-  install_framework "Pods-Cake/CocoaLumberjack.framework"
-  install_framework "Pods-Cake/IQKeyboardManager.framework"
-  install_framework "Pods-Cake/ISO8601DateFormatterValueTransformer.framework"
-  install_framework "Pods-Cake/JGActionSheet.framework"
-  install_framework "Pods-Cake/JVFloatLabeledTextField.framework"
-  install_framework "Pods-Cake/MBProgressHUD.framework"
-  install_framework "Pods-Cake/MGSwipeTableCell.framework"
-  install_framework "Pods-Cake/NYAlertViewController.framework"
-  install_framework "Pods-Cake/RESideMenu.framework"
-  install_framework "Pods-Cake/RKCLLocationValueTransformer.framework"
-  install_framework "Pods-Cake/RKValueTransformers.framework"
-  install_framework "Pods-Cake/RestKit.framework"
-  install_framework "Pods-Cake/SOCKit.framework"
-  install_framework "Pods-Cake/TransitionKit.framework"
-  install_framework "Pods-Cake/UITextField_Shake.framework"
-  install_framework "Pods-Cake/YYCache.framework"
-  install_framework "Pods-Cake/YYImage.framework"
-  install_framework "Pods-Cake/YYWebImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCore/AWSCore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManager/IQKeyboardManager.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JGActionSheet/JGActionSheet.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JVFloatLabeledTextField/JVFloatLabeledTextField.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MGSwipeTableCell/MGSwipeTableCell.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NYAlertViewController/NYAlertViewController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RESideMenu/RESideMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UITextField+Shake/UITextField_Shake.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYCache/YYCache.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYImage/YYImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYWebImage/YYWebImage.framework"
+fi
+if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
+  wait
 fi

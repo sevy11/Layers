@@ -1,6 +1,0 @@
-framework module RKCLLocationValueTransformer {
-  umbrella header "RKCLLocationValueTransformer-umbrella.h"
-
-  export *
-  module * { export * }
-}
