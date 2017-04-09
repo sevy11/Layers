@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024ACE4FD143A9879DD7755D /* Pods_CakeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E0D58AAFA690E909B105025 /* Pods_CakeTests.framework */; };
+		16B3CD2F12652359D6AB236D /* Pods_Cake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4424696EC6B6240108FFD3DB /* Pods_Cake.framework */; };
 		262591741E8218990077CECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 262591731E8218990077CECD /* Localizable.strings */; };
 		2625917A1E82B4640077CECD /* OutfitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 262591791E82B4640077CECD /* OutfitTableViewCell.m */; };
+		2636528B1E948AC200BF9748 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2636528A1E948AC200BF9748 /* User.m */; };
 		266E2A261E6CE89C00E33929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A251E6CE89C00E33929 /* main.m */; };
 		266E2A291E6CE89C00E33929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A281E6CE89C00E33929 /* AppDelegate.m */; };
 		266E2A2C1E6CE89C00E33929 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A2B1E6CE89C00E33929 /* ViewController.m */; };
@@ -16,27 +19,23 @@
 		266E2A311E6CE89C00E33929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 266E2A301E6CE89C00E33929 /* Assets.xcassets */; };
 		266E2A3F1E6CE89C00E33929 /* CakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A3E1E6CE89C00E33929 /* CakeTests.m */; };
 		266E2A4A1E6CE89C00E33929 /* CakeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A491E6CE89C00E33929 /* CakeUITests.m */; };
-		266E2A591E6CE9BE00E33929 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A581E6CE9BE00E33929 /* APIClient.m */; };
 		266E2A5F1E6CEBE000E33929 /* ConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A5E1E6CEBE000E33929 /* ConfigManager.m */; };
 		266E2A621E6D0A5700E33929 /* Cake.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A601E6D0A5700E33929 /* Cake.xcdatamodeld */; };
 		266E2A791E6D0F2C00E33929 /* User+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A721E6D0F2C00E33929 /* User+CoreDataClass.m */; };
 		266E2A7A1E6D0F2C00E33929 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A741E6D0F2C00E33929 /* User+CoreDataProperties.m */; };
 		266E2A7B1E6D0F2C00E33929 /* BaseAbstractModel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A761E6D0F2C00E33929 /* BaseAbstractModel+CoreDataClass.m */; };
 		266E2A7C1E6D0F2C00E33929 /* BaseAbstractModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A781E6D0F2C00E33929 /* BaseAbstractModel+CoreDataProperties.m */; };
-		266E2A871E6D18B000E33929 /* ExtendedError.m in Sources */ = {isa = PBXBuildFile; fileRef = 266E2A861E6D18B000E33929 /* ExtendedError.m */; };
 		26A5EC2D1E6F83E800FDA52F /* CakeAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC2C1E6F83E800FDA52F /* CakeAlertViewController.m */; };
-		26A5EC351E6FBCAA00FDA52F /* NSObject+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC341E6FBCAA00FDA52F /* NSObject+ProgressHUD.m */; };
 		26A5EC3C1E6FBE6900FDA52F /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC3B1E6FBE6900FDA52F /* UIViewController+Alert.m */; };
 		26A5EC3F1E6FBF4200FDA52F /* UIViewController+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC3E1E6FBF4200FDA52F /* UIViewController+CoreData.m */; };
 		26A5EC421E6FBFBD00FDA52F /* KeyValueMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC411E6FBFBD00FDA52F /* KeyValueMapper.m */; };
 		26A5EC451E6FC0CA00FDA52F /* CakeAbstractTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC441E6FC0CA00FDA52F /* CakeAbstractTableViewCell.m */; };
 		26A5EC481E6FC12200FDA52F /* HourDayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5EC471E6FC12200FDA52F /* HourDayTableViewCell.m */; };
 		26A613FB1E834EF9005A6AAA /* SignUpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A613FA1E834EF9005A6AAA /* SignUpTableViewController.m */; };
-		26A613FE1E837CDB005A6AAA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A613FD1E837CDB005A6AAA /* User.m */; };
 		26E9BE5A1E81696B00FC69F0 /* LoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9BE591E81696B00FC69F0 /* LoginTableViewController.m */; };
 		26F288091E90223100BC6188 /* VerificationCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F288081E90223100BC6188 /* VerificationCodeTableViewController.m */; };
 		26F2880D1E914D1400BC6188 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F2880C1E914D1400BC6188 /* UserManager.m */; };
-		3D0EDA2F59C652105017A33E /* Pods_Cake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECEF29D3413BBA2F129D9E26 /* Pods_Cake.framework */; };
+		B77DE66A021F61CFB8DF375D /* Pods_CakeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1965E19940BD69ED97D307ED /* Pods_CakeUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,9 +69,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0588273B8699E5F073211943 /* Pods-CakeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CakeUITests/Pods-CakeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		08F62BAAEF8775A1689BB48B /* Pods-CakeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CakeUITests/Pods-CakeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1965E19940BD69ED97D307ED /* Pods_CakeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CakeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		262591731E8218990077CECD /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		262591781E82B4640077CECD /* OutfitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutfitTableViewCell.h; sourceTree = "<group>"; };
 		262591791E82B4640077CECD /* OutfitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutfitTableViewCell.m; sourceTree = "<group>"; };
+		263652891E948AC200BF9748 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		2636528A1E948AC200BF9748 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		266E2A211E6CE89C00E33929 /* Cake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		266E2A251E6CE89C00E33929 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		266E2A271E6CE89C00E33929 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,8 +92,6 @@
 		266E2A451E6CE89C00E33929 /* CakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		266E2A491E6CE89C00E33929 /* CakeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CakeUITests.m; sourceTree = "<group>"; };
 		266E2A4B1E6CE89C00E33929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		266E2A571E6CE9BE00E33929 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = ../APIClient.h; sourceTree = "<group>"; };
-		266E2A581E6CE9BE00E33929 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = ../APIClient.m; sourceTree = "<group>"; };
 		266E2A5B1E6CEA8900E33929 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		266E2A5D1E6CEBE000E33929 /* ConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigManager.h; sourceTree = "<group>"; };
 		266E2A5E1E6CEBE000E33929 /* ConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigManager.m; sourceTree = "<group>"; };
@@ -102,12 +104,8 @@
 		266E2A761E6D0F2C00E33929 /* BaseAbstractModel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseAbstractModel+CoreDataClass.m"; sourceTree = "<group>"; };
 		266E2A771E6D0F2C00E33929 /* BaseAbstractModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseAbstractModel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		266E2A781E6D0F2C00E33929 /* BaseAbstractModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseAbstractModel+CoreDataProperties.m"; sourceTree = "<group>"; };
-		266E2A851E6D18B000E33929 /* ExtendedError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedError.h; sourceTree = "<group>"; };
-		266E2A861E6D18B000E33929 /* ExtendedError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedError.m; sourceTree = "<group>"; };
 		26A5EC2B1E6F83E800FDA52F /* CakeAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CakeAlertViewController.h; sourceTree = "<group>"; };
 		26A5EC2C1E6F83E800FDA52F /* CakeAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CakeAlertViewController.m; sourceTree = "<group>"; };
-		26A5EC331E6FBCAA00FDA52F /* NSObject+ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ProgressHUD.h"; sourceTree = "<group>"; };
-		26A5EC341E6FBCAA00FDA52F /* NSObject+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ProgressHUD.m"; sourceTree = "<group>"; };
 		26A5EC3A1E6FBE6900FDA52F /* UIViewController+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		26A5EC3B1E6FBE6900FDA52F /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		26A5EC3D1E6FBF4200FDA52F /* UIViewController+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CoreData.h"; sourceTree = "<group>"; };
@@ -120,17 +118,18 @@
 		26A5EC471E6FC12200FDA52F /* HourDayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HourDayTableViewCell.m; sourceTree = "<group>"; };
 		26A613F91E834EF9005A6AAA /* SignUpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpTableViewController.h; sourceTree = "<group>"; };
 		26A613FA1E834EF9005A6AAA /* SignUpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableViewController.m; sourceTree = "<group>"; };
-		26A613FC1E837CDB005A6AAA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		26A613FD1E837CDB005A6AAA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		26E9BE581E81696B00FC69F0 /* LoginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableViewController.h; sourceTree = "<group>"; };
 		26E9BE591E81696B00FC69F0 /* LoginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableViewController.m; sourceTree = "<group>"; };
 		26F288071E90223100BC6188 /* VerificationCodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeTableViewController.h; sourceTree = "<group>"; };
 		26F288081E90223100BC6188 /* VerificationCodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeTableViewController.m; sourceTree = "<group>"; };
 		26F2880B1E914D1400BC6188 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		26F2880C1E914D1400BC6188 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
-		3DB3E7600D083F4558DB5238 /* Pods-Cake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cake.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cake/Pods-Cake.release.xcconfig"; sourceTree = "<group>"; };
-		91DB68A5259B740E772D60DE /* Pods-Cake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cake/Pods-Cake.debug.xcconfig"; sourceTree = "<group>"; };
-		ECEF29D3413BBA2F129D9E26 /* Pods_Cake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E0D58AAFA690E909B105025 /* Pods_CakeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CakeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4424696EC6B6240108FFD3DB /* Pods_Cake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F2EB8EAA11C3103D7E7B88A /* Pods-Cake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cake.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cake/Pods-Cake.release.xcconfig"; sourceTree = "<group>"; };
+		78B1F960AEBD551BCA90E8B4 /* Pods-CakeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CakeTests/Pods-CakeTests.release.xcconfig"; sourceTree = "<group>"; };
+		DF73DD1EA5752562C914E3CA /* Pods-CakeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CakeTests/Pods-CakeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE51306981DE394318D34AE4 /* Pods-Cake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cake/Pods-Cake.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D0EDA2F59C652105017A33E /* Pods_Cake.framework in Frameworks */,
+				16B3CD2F12652359D6AB236D /* Pods_Cake.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				024ACE4FD143A9879DD7755D /* Pods_CakeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,12 +153,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77DE66A021F61CFB8DF375D /* Pods_CakeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F81250DDF7935E96CA4FF09 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE51306981DE394318D34AE4 /* Pods-Cake.debug.xcconfig */,
+				4F2EB8EAA11C3103D7E7B88A /* Pods-Cake.release.xcconfig */,
+				DF73DD1EA5752562C914E3CA /* Pods-CakeTests.debug.xcconfig */,
+				78B1F960AEBD551BCA90E8B4 /* Pods-CakeTests.release.xcconfig */,
+				08F62BAAEF8775A1689BB48B /* Pods-CakeUITests.debug.xcconfig */,
+				0588273B8699E5F073211943 /* Pods-CakeUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		266E2A181E6CE89B00E33929 = {
 			isa = PBXGroup;
 			children = (
@@ -167,8 +181,8 @@
 				266E2A3D1E6CE89C00E33929 /* CakeTests */,
 				266E2A481E6CE89C00E33929 /* CakeUITests */,
 				266E2A221E6CE89C00E33929 /* Products */,
-				734FB815682F26971969080A /* Pods */,
-				54E72DA387CACC47D0AEEFC7 /* Frameworks */,
+				1F81250DDF7935E96CA4FF09 /* Pods */,
+				FBC994029829EF8D0267E60F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,8 +245,6 @@
 		266E2A5A1E6CE9CB00E33929 /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
-				266E2A571E6CE9BE00E33929 /* APIClient.h */,
-				266E2A581E6CE9BE00E33929 /* APIClient.m */,
 				266E2A5D1E6CEBE000E33929 /* ConfigManager.h */,
 				266E2A5E1E6CEBE000E33929 /* ConfigManager.m */,
 				26F2880B1E914D1400BC6188 /* UserManager.h */,
@@ -263,10 +275,8 @@
 				266E2A721E6D0F2C00E33929 /* User+CoreDataClass.m */,
 				266E2A731E6D0F2C00E33929 /* User+CoreDataProperties.h */,
 				266E2A741E6D0F2C00E33929 /* User+CoreDataProperties.m */,
-				266E2A851E6D18B000E33929 /* ExtendedError.h */,
-				26A613FC1E837CDB005A6AAA /* User.h */,
-				26A613FD1E837CDB005A6AAA /* User.m */,
-				266E2A861E6D18B000E33929 /* ExtendedError.m */,
+				263652891E948AC200BF9748 /* User.h */,
+				2636528A1E948AC200BF9748 /* User.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -313,8 +323,6 @@
 		26A5EC361E6FBCC300FDA52F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				26A5EC331E6FBCAA00FDA52F /* NSObject+ProgressHUD.h */,
-				26A5EC341E6FBCAA00FDA52F /* NSObject+ProgressHUD.m */,
 				26A5EC3A1E6FBE6900FDA52F /* UIViewController+Alert.h */,
 				26A5EC3B1E6FBE6900FDA52F /* UIViewController+Alert.m */,
 				26A5EC3D1E6FBF4200FDA52F /* UIViewController+CoreData.h */,
@@ -338,21 +346,14 @@
 			name = LoginFlow;
 			sourceTree = "<group>";
 		};
-		54E72DA387CACC47D0AEEFC7 /* Frameworks */ = {
+		FBC994029829EF8D0267E60F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ECEF29D3413BBA2F129D9E26 /* Pods_Cake.framework */,
+				4424696EC6B6240108FFD3DB /* Pods_Cake.framework */,
+				2E0D58AAFA690E909B105025 /* Pods_CakeTests.framework */,
+				1965E19940BD69ED97D307ED /* Pods_CakeUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		734FB815682F26971969080A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				91DB68A5259B740E772D60DE /* Pods-Cake.debug.xcconfig */,
-				3DB3E7600D083F4558DB5238 /* Pods-Cake.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,13 +363,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 266E2A4E1E6CE89C00E33929 /* Build configuration list for PBXNativeTarget "Cake" */;
 			buildPhases = (
-				55887D704D49AF456C5093A7 /* Check Pods Manifest.lock */,
+				D5E9EEC80C0EF42ADD73862E /* [CP] Check Pods Manifest.lock */,
 				266E2A1D1E6CE89B00E33929 /* Sources */,
 				266E2A1E1E6CE89B00E33929 /* Frameworks */,
 				266E2A1F1E6CE89B00E33929 /* Resources */,
-				967647BA2CB0FEB52B92B0F0 /* Embed Pods Frameworks */,
-				5D2624C72CAB6FB0EFFD6B43 /* Copy Pods Resources */,
 				266E2A8A1E6D9F3600E33929 /* Embed Frameworks */,
+				1C5E5810E2F1D020D3655CBA /* [CP] Embed Pods Frameworks */,
+				97524594B4C9F2F63704E41F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -383,9 +384,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 266E2A511E6CE89C00E33929 /* Build configuration list for PBXNativeTarget "CakeTests" */;
 			buildPhases = (
+				FDB79E021E74A8213ABEB917 /* [CP] Check Pods Manifest.lock */,
 				266E2A361E6CE89C00E33929 /* Sources */,
 				266E2A371E6CE89C00E33929 /* Frameworks */,
 				266E2A381E6CE89C00E33929 /* Resources */,
+				EF4CAA28C751236D5F13A7AE /* [CP] Embed Pods Frameworks */,
+				11C406957E4ADA3B5D093F55 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -401,9 +405,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 266E2A541E6CE89C00E33929 /* Build configuration list for PBXNativeTarget "CakeUITests" */;
 			buildPhases = (
+				45A37E66C1A8CA6881020E4C /* [CP] Check Pods Manifest.lock */,
 				266E2A411E6CE89C00E33929 /* Sources */,
 				266E2A421E6CE89C00E33929 /* Frameworks */,
 				266E2A431E6CE89C00E33929 /* Resources */,
+				7421032572BD1CE1A0065A4F /* [CP] Embed Pods Frameworks */,
+				684A728A24C536B069714858 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -492,29 +499,89 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		55887D704D49AF456C5093A7 /* Check Pods Manifest.lock */ = {
+		11C406957E4ADA3B5D093F55 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CakeTests/Pods-CakeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5D2624C72CAB6FB0EFFD6B43 /* Copy Pods Resources */ = {
+		1C5E5810E2F1D020D3655CBA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cake/Pods-Cake-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45A37E66C1A8CA6881020E4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		684A728A24C536B069714858 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CakeUITests/Pods-CakeUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7421032572BD1CE1A0065A4F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CakeUITests/Pods-CakeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97524594B4C9F2F63704E41F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,19 +589,49 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cake/Pods-Cake-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		967647BA2CB0FEB52B92B0F0 /* Embed Pods Frameworks */ = {
+		D5E9EEC80C0EF42ADD73862E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cake/Pods-Cake-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF4CAA28C751236D5F13A7AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CakeTests/Pods-CakeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDB79E021E74A8213ABEB917 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -544,24 +641,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26A5EC351E6FBCAA00FDA52F /* NSObject+ProgressHUD.m in Sources */,
 				26E9BE5A1E81696B00FC69F0 /* LoginTableViewController.m in Sources */,
 				2625917A1E82B4640077CECD /* OutfitTableViewCell.m in Sources */,
 				266E2A5F1E6CEBE000E33929 /* ConfigManager.m in Sources */,
 				26A5EC3C1E6FBE6900FDA52F /* UIViewController+Alert.m in Sources */,
 				26A5EC3F1E6FBF4200FDA52F /* UIViewController+CoreData.m in Sources */,
-				26A613FE1E837CDB005A6AAA /* User.m in Sources */,
 				266E2A2C1E6CE89C00E33929 /* ViewController.m in Sources */,
 				266E2A291E6CE89C00E33929 /* AppDelegate.m in Sources */,
+				2636528B1E948AC200BF9748 /* User.m in Sources */,
 				266E2A791E6D0F2C00E33929 /* User+CoreDataClass.m in Sources */,
 				26F2880D1E914D1400BC6188 /* UserManager.m in Sources */,
-				266E2A871E6D18B000E33929 /* ExtendedError.m in Sources */,
 				266E2A7C1E6D0F2C00E33929 /* BaseAbstractModel+CoreDataProperties.m in Sources */,
 				26F288091E90223100BC6188 /* VerificationCodeTableViewController.m in Sources */,
 				266E2A261E6CE89C00E33929 /* main.m in Sources */,
 				26A613FB1E834EF9005A6AAA /* SignUpTableViewController.m in Sources */,
 				266E2A7B1E6D0F2C00E33929 /* BaseAbstractModel+CoreDataClass.m in Sources */,
-				266E2A591E6CE9BE00E33929 /* APIClient.m in Sources */,
 				26A5EC451E6FC0CA00FDA52F /* CakeAbstractTableViewCell.m in Sources */,
 				266E2A7A1E6D0F2C00E33929 /* User+CoreDataProperties.m in Sources */,
 				26A5EC481E6FC12200FDA52F /* HourDayTableViewCell.m in Sources */,
@@ -654,7 +748,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -695,7 +789,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -704,7 +798,7 @@
 		};
 		266E2A4F1E6CE89C00E33929 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91DB68A5259B740E772D60DE /* Pods-Cake.debug.xcconfig */;
+			baseConfigurationReference = EE51306981DE394318D34AE4 /* Pods-Cake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -715,6 +809,7 @@
 					"$(PROJECT_DIR)/Cake",
 				);
 				INFOPLIST_FILE = Cake/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sevy.Cake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -726,7 +821,7 @@
 		};
 		266E2A501E6CE89C00E33929 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DB3E7600D083F4558DB5238 /* Pods-Cake.release.xcconfig */;
+			baseConfigurationReference = 4F2EB8EAA11C3103D7E7B88A /* Pods-Cake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -737,6 +832,7 @@
 					"$(PROJECT_DIR)/Cake",
 				);
 				INFOPLIST_FILE = Cake/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sevy.Cake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -747,6 +843,7 @@
 		};
 		266E2A521E6CE89C00E33929 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF73DD1EA5752562C914E3CA /* Pods-CakeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = TKVBVK4237;
@@ -760,6 +857,7 @@
 		};
 		266E2A531E6CE89C00E33929 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78B1F960AEBD551BCA90E8B4 /* Pods-CakeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = TKVBVK4237;
@@ -773,6 +871,7 @@
 		};
 		266E2A551E6CE89C00E33929 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08F62BAAEF8775A1689BB48B /* Pods-CakeUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = TKVBVK4237;
 				INFOPLIST_FILE = CakeUITests/Info.plist;
@@ -785,6 +884,7 @@
 		};
 		266E2A561E6CE89C00E33929 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0588273B8699E5F073211943 /* Pods-CakeUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = TKVBVK4237;
 				INFOPLIST_FILE = CakeUITests/Info.plist;

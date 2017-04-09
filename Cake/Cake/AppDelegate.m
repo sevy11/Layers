@@ -7,70 +7,154 @@
 //
 
 #import "AppDelegate.h"
-#import "APIClient.h"
 #import "ConfigManager.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import "UserManager.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic,strong) AWSTaskCompletionSource<NSNumber*> *rememberDeviceCompletionSource;
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [ConfigManager sharedManager].environmentMode = EnvironmentModeStaging;
-    //[APIClient sharedClient];
+
+    [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
     [[IQKeyboardManager sharedManager] setEnable:NO];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
 
+    self.storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
-
-
-
-
-
-
+    [UserManager sharedManager].userPool.delegate = self;
     return YES;
 }
 
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+//set up password authentication ui to retrieve username and password from the user
+-(id<AWSCognitoIdentityPasswordAuthentication>) startPasswordAuthentication {
+
+    if(!self.navigationController){
+        self.navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SignupViewController"];
+    }
+    if(!self.logInViewController){
+        self.logInViewController = self.navigationController.viewControllers[0];
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //rewind to login screen
+        [self.navigationController popToRootViewControllerAnimated:NO];
+
+        //display login screen if it isn't already visibile
+        if(!(self.navigationController.isViewLoaded && self.navigationController.view.window))
+        {
+            [self.window.rootViewController presentViewController:self.navigationController animated:YES completion:nil];
+        }
+    });
+    return self.logInViewController;
 }
 
+//set up mfa ui to retrieve mfa code from end user
+-(id<AWSCognitoIdentityMultiFactorAuthentication>) startMultiFactorAuthentication {
+    if(!self.verifyTableViewController){
+        self.verifyTableViewController = [VerificationCodeTableViewController new];
+        self.verifyTableViewController.modalPresentationStyle = UIModalPresentationPopover;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //if mfa view isn't already visible, display it
+        if (!(self.verifyTableViewController.isViewLoaded && self.verifyTableViewController.view.window)) {
+            //display mfa as popover on current view controller
+            UIViewController *vc = self.window.rootViewController;
+            [vc presentViewController:self.verifyTableViewController animated: YES completion: nil];
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+            //configure popover vc
+            UIPopoverPresentationController *presentationController =
+            [self.verifyTableViewController popoverPresentationController];
+            presentationController.permittedArrowDirections =
+            UIPopoverArrowDirectionLeft | UIPopoverArrowDirectionRight;
+            presentationController.sourceView = vc.view;
+            presentationController.sourceRect = vc.view.bounds;
+        }
+    });
+    return self.verifyTableViewController;
 }
 
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+//set up remember device ui
+-(id<AWSCognitoIdentityRememberDevice>) startRememberDevice {
+    return self;
 }
 
+-(void) getRememberDevice: (AWSTaskCompletionSource<NSNumber *> *) rememberDeviceCompletionSource {
+    self.rememberDeviceCompletionSource = rememberDeviceCompletionSource;
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    //Don't do anything fancy here, just display a popup.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[[UIAlertView alloc] initWithTitle:@"Remember Device"
+                                    message:@"Do you want to remember this device?"
+                                   delegate:self
+                          cancelButtonTitle:@"No"
+                          otherButtonTitles:@"Yes", nil] show];
+    });
 }
 
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+-(void) didCompleteRememberDeviceStepWithError:(NSError* _Nullable) error {
+    [self errorPopup:error];
 }
 
-
-#pragma mark - Logging
-- (void)configureLogging {
-
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    self.fileLogger = [[DDFileLogger alloc] init];
-    self.fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
-    self.fileLogger.logFileManager.maximumNumberOfLogFiles = 14; //max of 1 week of logs
-
-    [DDLog addLogger:self.fileLogger];
+-(void) errorPopup:(NSError *_Nullable) error {
+    //Don't do anything fancy here, just display a popup.
+    if(error){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[UIAlertView alloc] initWithTitle:error.userInfo[@"__type"]
+                                        message:error.userInfo[@"message"]
+                                       delegate:nil
+                              cancelButtonTitle:nil
+                              otherButtonTitles:@"Ok", nil] show];
+        });
+    }
 }
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            self.rememberDeviceCompletionSource.result = @(NO);
+            break;
+        case 1:
+            self.rememberDeviceCompletionSource.result = @(YES);
+            break;
+        default:
+            break;
+    }
+
+    self.rememberDeviceCompletionSource = nil;
+}
+
+#pragma mark - passwordRequired
+//-(id<AWSCognitoIdentityNewPasswordRequired>) startNewPasswordRequired {
+//    if(!self.passwordRequiredViewController){
+//        self.passwordRequiredViewController = [NewPasswordRequiredViewController new];
+//        self.passwordRequiredViewController.modalPresentationStyle = UIModalPresentationPopover;
+//    }
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        //if new password required view isn't already visible, display it
+//        if (!(self.passwordRequiredViewController.isViewLoaded && self.passwordRequiredViewController.view.window)) {
+//            //display mfa as popover on current view controller
+//            UIViewController *vc = self.window.rootViewController;
+//            [vc presentViewController:self.passwordRequiredViewController animated: YES completion: nil];
+//
+//            //configure popover vc
+//            UIPopoverPresentationController *presentationController =
+//            [self.passwordRequiredViewController popoverPresentationController];
+//            presentationController.permittedArrowDirections =
+//            UIPopoverArrowDirectionLeft | UIPopoverArrowDirectionRight;
+//            presentationController.sourceView = vc.view;
+//            presentationController.sourceRect = vc.view.bounds;
+//        }
+//    });
+//    return self.passwordRequiredViewController;
+//
+//}
 
 @end

@@ -34,12 +34,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *website;
 @property (nullable, nonatomic, retain) NSString *referralCode;
 
-+ (User *)currentUser;
+//+ (User *)currentUser;
 + (void)setCurrentUser:(User * _Nullable)currentUser;
 //+ (NSDictionary*)fieldMappingsForUpdatingUser;
 //- (NSURL*)getProfilePicUrlOfSize:(ProfilePictureSize)picSize;
 - (BOOL)isAuthenticatedUser;
-- (BOOL)isGuestUser;
+//- (BOOL)isGuestUser;
 - (NSString *)userName;
 
 @end

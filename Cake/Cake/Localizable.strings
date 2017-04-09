@@ -13,10 +13,11 @@
 //LOGIN
 "Login.HUD"                     = "Logging in to Layers";
 "Login.Email"                   = "Email";
+"Login.Username"                   = "Username";
 "Login.Password"                = "Password";
 "Login.Password.Title"          = "Password too short 😒";
 "Login.Password.Body"           = "Your password must be at least 6 characters";
-
+"Login.Alert.Resend"            = "Resend";
 
 //Sign Up
 "SignUp.Disclaimer"             = "By tapping sign up, you accept the MyTown terms of use, and privacy policy";
@@ -33,3 +34,6 @@
 "SignUp.NoPassword"             = "Password missing 😲";
 "SignUp.PasswordCase"           = "Password's must contain at least one uppercase letter, and one number 😲";
 "SignUp.HUD"                    = "Signing up for Layers";
+
+//Verification Code
+"Verification.Code"             = "6 digit Code";

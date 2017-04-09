@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CocoaLumberjack/CocoaLumberjack.h>
-#import <CoreData/CoreData.h>
+#import "AWSCognitoIdentityProvider.h"
+#import "LoginTableViewController.h"
+#import "VerificationCodeTableViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, AWSCognitoIdentityInteractiveAuthenticationDelegate, AWSCognitoIdentityRememberDevice, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) DDFileLogger *fileLogger;
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) UIStoryboard *storyboard;
+@property(nonatomic,strong) UINavigationController *navigationController;
+@property(nonatomic,strong) LoginTableViewController *logInViewController;
+@property(nonatomic,strong) VerificationCodeTableViewController *verifyTableViewController;
+//@property(nonatomic,strong) NewPasswordRequiredViewController* passwordRequiredViewController;
 
 @end
 

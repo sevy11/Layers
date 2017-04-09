@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *outfits;
+@property (nonatomic, strong) AWSCognitoIdentityUser *user;
 
 @end
 
@@ -25,11 +26,15 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.outfits = [NSArray array];
-    self.outfits = @[@"top", @"bottom", @"under"];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    self.navigationController.title = [[UserManager sharedManager].userPool currentUser].username;
+
+    if (self.user) {
+        self.navigationController.navigationBar.topItem.title = self.user.username;
+    } else {
+        [self performSegueWithIdentifier:kLoginSegue sender:self];
+    }
 }
 
 #pragma mark - Table view data source

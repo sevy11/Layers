@@ -1,52 +1,14 @@
 PODS:
-  - AWSCognito (2.4.12):
-    - AWSCore (= 2.4.12)
-  - AWSCognitoIdentityProvider (2.4.12):
-    - AWSCore (= 2.4.12)
-  - AWSCore (2.4.12)
-  - AWSDynamoDB (2.4.12):
-    - AWSCore (= 2.4.12)
-  - BPXLUUIDHandler (0.0.1)
-  - CocoaLumberjack (2.4.0):
-    - CocoaLumberjack/Default (= 2.4.0)
-    - CocoaLumberjack/Extensions (= 2.4.0)
-  - CocoaLumberjack/Core (2.4.0)
-  - CocoaLumberjack/Default (2.4.0):
-    - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.4.0):
-    - CocoaLumberjack/Default
+  - AWSCognitoIdentityProvider (2.4.16):
+    - AWSCore (= 2.4.16)
+  - AWSCore (2.4.16)
   - IQKeyboardManager (4.0.7)
-  - ISO8601DateFormatterValueTransformer (0.6.1):
-    - RKValueTransformers (~> 1.1.0)
   - JGActionSheet (1.0.5)
   - JVFloatLabeledTextField (1.1.1)
-  - MBProgressHUD (0.9.2)
   - MGSwipeTableCell (1.5.6)
   - NYAlertViewController (1.3.0)
   - RESideMenu (4.0.7)
-  - RestKit (0.27.0):
-    - RestKit/Core (= 0.27.0)
-  - RestKit/Core (0.27.0):
-    - RestKit/CoreData
-    - RestKit/Network
-    - RestKit/ObjectMapping
-  - RestKit/CoreData (0.27.0):
-    - RestKit/ObjectMapping
-  - RestKit/Network (0.27.0):
-    - RestKit/ObjectMapping
-    - RestKit/Support
-    - SOCKit
-  - RestKit/ObjectMapping (0.27.0):
-    - ISO8601DateFormatterValueTransformer (~> 0.6.1)
-    - RestKit/Support
-    - RKValueTransformers (~> 1.1.0)
-  - RestKit/Support (0.27.0):
-    - TransitionKit (~> 2.2)
-  - RKCLLocationValueTransformer (1.1.0):
-    - RKValueTransformers (~> 1.1.0)
-  - RKValueTransformers (1.1.3)
-  - SOCKit (1.1)
-  - TransitionKit (2.2.1)
+  - SVProgressHUD (2.1.2)
   - UITextField+Shake (1.1.2)
   - YYCache (1.0.4)
   - YYImage (1.0.4):
@@ -57,46 +19,33 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
-  - AWSCognito
-  - AWSCognitoIdentityProvider
-  - AWSDynamoDB
-  - BPXLUUIDHandler (~> 0.0)
-  - CocoaLumberjack (~> 2.3)
+  - AWSCognitoIdentityProvider (~> 2.4.16)
+  - AWSCore (~> 2.4.16)
   - IQKeyboardManager
   - JGActionSheet
   - JVFloatLabeledTextField
-  - MBProgressHUD (~> 0.8)
   - MGSwipeTableCell (~> 1.5)
   - NYAlertViewController
   - RESideMenu (~> 4.0.7)
-  - RestKit
-  - RKCLLocationValueTransformer
+  - SVProgressHUD
   - UITextField+Shake (~> 1.1)
   - YYWebImage
 
 SPEC CHECKSUMS:
-  AWSCognito: 3c897210f6bfbb04585332388dff2036a3f39540
-  AWSCognitoIdentityProvider: 219628dfb0110d9763e18a2f4d6895e9ad963382
-  AWSCore: 8ee5b1dc06a0fd562429fe7120113ca93cbfbca6
-  AWSDynamoDB: f78e38016afa783c9c3d7d0f1c33c8c283eee8d9
-  BPXLUUIDHandler: fa98b898a44ee08306e59b7181e90d59c9a53b95
-  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  AWSCognitoIdentityProvider: 1c74bb819fc5f74a708a4a8e0be8b235a959ab86
+  AWSCore: 7c3c129991e6387bcbad7132bc3661e7135754db
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
-  ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   JGActionSheet: 2cfca820b57a11ec4b4a5655d45ee599fbeddc05
   JVFloatLabeledTextField: 0e5524b097f102036214dd8279edc8ecf08b5e18
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
   NYAlertViewController: b93f82e2c1fc6d5e9485512ddbe7b481f463a074
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
-  RestKit: a0244db34e14ed9cf059fcee2be6733cc162c34a
-  RKCLLocationValueTransformer: 2cf0ea0fb7cd4bc70c56834fb92abc717c66f982
-  RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
-  SOCKit: c7376ac262bea9115b8f749358f762522a47d392
-  TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   UITextField+Shake: 47cc0429dafb3da580686339ad2da091249a8ea2
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: eb705eb14d7bce997563bdde667e00d6bb616ee0
+
+COCOAPODS: 1.2.0

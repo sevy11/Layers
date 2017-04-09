@@ -15,8 +15,8 @@ static User *_currentUser = nil;
 
 
 #pragma mark - Setters
-+ (User *)currentUser {
-        if (!_currentUser) {
+//+ (User *)currentUser {
+  //      if (!_currentUser) {
 
             //Initialize the core data object here
  //           NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:]];
@@ -46,11 +46,12 @@ static User *_currentUser = nil;
                 NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:[RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext];
                 _currentUser = [[User alloc] initWithEntity:entity insertIntoManagedObjectContext:[RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext];
             }
-             */
-        }
 
-    return _currentUser;
-}
+        }
+             */
+
+ //   return _currentUser;
+//}
 
 + (void)setCurrentUser:(User* _Nullable)currentUser {
     _currentUser = currentUser;
@@ -74,14 +75,14 @@ static User *_currentUser = nil;
         return NO;
     }
 }
-
-- (BOOL)isGuestUser {
-    if (!([User currentUser].email.length > 0) && [User currentUser].firstName.length > 0) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
+//
+//- (BOOL)isGuestUser {
+//    if (!([User currentUser].email.length > 0) && [User currentUser].firstName.length > 0) {
+//        return YES;
+//    } else {
+//        return NO;
+//    }
+//}
 
 - (NSString *)userName {
     if (self.firstName.length && self.lastName.length) {

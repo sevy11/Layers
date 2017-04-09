@@ -7,15 +7,15 @@
 //
 
 #import "SignUpTableViewController.h"
-#import "APIClient.h"
 #import "ConfigManager.h"
 #import "Config.h"
 #import "JVFloatLabeledTextField.h"
 #import "CakeAlertViewController.h"
 #import "AWSCognitoIdentityProvider.h"
-#import "NSObject+ProgressHUD.h"
+#import "SVProgressHUD.h"
 #import "VerificationCodeTableViewController.h"
 #import "UserManager.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 typedef NS_ENUM(NSUInteger, SelectedSignUpCell) {
     SelectedSignUpCellFirstName = 0,
@@ -52,6 +52,8 @@ typedef NS_ENUM(NSUInteger, SelectedSignUpCell) {
     [self styleButtons];
     [self setupTextFields];
     [self setupTermsTextView];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
     self.user = [AWSCognitoIdentityUser new];
     self.nameTextField.delegate = self;
     self.emailTextField.delegate = self;
@@ -62,6 +64,12 @@ typedef NS_ENUM(NSUInteger, SelectedSignUpCell) {
     self.iconRoundedView.clipsToBounds = YES;
     self.navigationItem.title = NSLocalizedString(@"SignUp.Title", @"get string for title");
     [self setupTapGestures];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:YES];
+    [[IQKeyboardManager sharedManager] setEnable:NO];
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
 }
 
 
@@ -110,42 +118,41 @@ typedef NS_ENUM(NSUInteger, SelectedSignUpCell) {
             [self presentViewController:alertViewController animated:YES completion:nil];
             return;
         }
-        [self showProgressHudWithTitle:NSLocalizedString(@"SignUp.HUD", @"get string for log in message") message:nil];
-        AWSCognitoIdentityUserAttributeType *phone = [AWSCognitoIdentityUserAttributeType new];
-        phone.name = @"phone_number";
-        //phone number must be prefixed by country code
-        phone.value = self.phoneNumberTextField.text;
-        AWSCognitoIdentityUserAttributeType * email = [AWSCognitoIdentityUserAttributeType new];
-        email.name = @"email";
-        email.value = self.emailTextField.text;
-
-        //register the user
-        [[[UserManager sharedManager].userPool signUp:self.nameTextField.text password:self.passwordTextField.text userAttributes:@[phone, email] validationData:nil] continueWithBlock:^id _Nullable(AWSTask<AWSCognitoIdentityUserPoolSignUpResponse *> * _Nonnull task) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideAllHUDs];
-                if(task.error) {
-                    CakeAlertViewController *errorAlert = [[CakeAlertViewController alloc] initWithAlertTitle:task.error.userInfo[@"__type"] message:task.error.userInfo[@"message"]];
-                    NYAlertAction *cancelAction = [NYAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(NYAlertAction *action) {
-                        [errorAlert dismissViewControllerAnimated:YES completion:nil];
-                    }];
-                    [errorAlert addAction:cancelAction];
-                    [self presentViewController:errorAlert animated:YES completion:nil];
-                } else {
-                    AWSCognitoIdentityUserPoolSignUpResponse *response = task.result;
-                    if(!response.userConfirmed){
-                        NSLog(@"user: %@", response);
-                        [self performSegueWithIdentifier:kVerifySegue sender:self];
-                        //need to confirm user using user.confirmUser:
-                    }
-                }});
-            return nil;
-        }];
-
+        [SVProgressHUD show];
+        [self signupUser];
     } else if (indexPath.row == SelectedSignUpCellLogIn) {
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
+- (void)signupUser {
+    //        AWSCognitoIdentityUserAttributeType *phone = [AWSCognitoIdentityUserAttributeType new];
+    //        phone.name = @"phone_number";
+    //        phone.value = self.phoneNumberTextField.text;
+    AWSCognitoIdentityUserAttributeType * email = [AWSCognitoIdentityUserAttributeType new];
+    email.name = @"email";
+    email.value = self.emailTextField.text;
+    //register the user
+    [[[UserManager sharedManager].userPool signUp:self.nameTextField.text password:self.passwordTextField.text userAttributes:@[ email] validationData:nil] continueWithBlock:^id _Nullable(AWSTask<AWSCognitoIdentityUserPoolSignUpResponse *> * _Nonnull task) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            if(task.error) {
+                CakeAlertViewController *errorAlert = [[CakeAlertViewController alloc] initWithAlertTitle:task.error.userInfo[@"__type"] message:task.error.userInfo[@"message"]];
+                NYAlertAction *cancelAction = [NYAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(NYAlertAction *action) {
+                    [errorAlert dismissViewControllerAnimated:YES completion:nil];
+                }];
+                [errorAlert addAction:cancelAction];
+                [self presentViewController:errorAlert animated:YES completion:nil];
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //AWSCognitoIdentityUserPoolSignUpResponse *response = task.result;
+                    self.user = task.result.user;
+                    [self performSegueWithIdentifier:kVerifySegue sender:self];
+                });
+            }});
+        return nil;
+    }];
+}
 
 #pragma mark - ScrollView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

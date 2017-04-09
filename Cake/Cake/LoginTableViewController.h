@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AWSCognitoIdentityProvider.h"
 
-@interface LoginTableViewController : UITableViewController
+@interface LoginTableViewController : UITableViewController<AWSCognitoIdentityMultiFactorAuthentication, UITextFieldDelegate, AWSCognitoIdentityInteractiveAuthenticationDelegate>
 
 @end

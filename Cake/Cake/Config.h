@@ -7,10 +7,9 @@
 //
 #ifndef Config_h
 #define Config_h
-
 #import <Foundation/Foundation.h>
-#import <CocoaLumberjack/CocoaLumberjack.h>
-const static NSUInteger ddLogLevel = DDLogLevelAll;
+#import <UIKit/UIKit.h>
+
 //#define NSLog(__FORMAT__, ...) DDLogVerbose((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 /* MACROS */

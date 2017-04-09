@@ -11,9 +11,10 @@
 #import "Config.h"
 #import "JVFloatLabeledTextField.h"
 #import "UserManager.h"
-#import "NSObject+ProgressHUD.h"
+#import "SVProgressHUD.h"
 #import "UIViewController+Alert.h"
 #import "CakeAlertViewController.h"
+#import "VerificationCodeTableViewController.h"
 
 typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
     LoginSelectedStaticCellEmailEntry = 0,
@@ -22,7 +23,7 @@ typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
     LoginSelectedStaticCellCreateAccount
 };
 
-@interface LoginTableViewController () <UITextFieldDelegate>
+@interface LoginTableViewController ()
 
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *passwordTextField;
@@ -32,6 +33,7 @@ typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
 @property (weak, nonatomic) IBOutlet UILabel *createAccountLabel;
 @property (strong, nonatomic) AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails*>* passwordAuthenticationCompletion;
+@property (nullable, nonatomic) AWSCognitoIdentityUser *user;
 
 @end
 
@@ -42,10 +44,19 @@ typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
     [self styleViews];
     self.emailTextField.delegate = self;
     self.passwordTextField.delegate = self;
+    [UserManager sharedManager].userPool.delegate = self;
     UITapGestureRecognizer *tapTodismissKeyboard = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.iconSuperView addGestureRecognizer:tapTodismissKeyboard];
 }
 
+
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[VerificationCodeTableViewController class]]) {
+        VerificationCodeTableViewController *controller = segue.destinationViewController;
+        controller.user = self.user;
+    }
+}
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -71,12 +82,10 @@ typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
             return;
         }
         if (self.emailTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
-            [self showProgressHudWithTitle:NSLocalizedString(@"Login.HUD", @"get string for log in message") message:nil];
-            [self getAWSUser];
-
-            //self.passwordAuthenticationCompletion.result = [[AWSCognitoIdentityPasswordAuthenticationDetails alloc] initWithUsername:self.emailTextField.text password:self.passwordTextField.text];
+            [SVProgressHUD show];
+            [self authenticateUser];
         } else {
-            [self hideAllHUDs];
+            [SVProgressHUD dismiss];
             [self showMessage:NSLocalizedString(@"Login.NoCredentials", @"user has to fill out creds") withType:MessageTypeError];
         }
     } else if (indexPath.row == LoginSelectedStaticCellCreateAccount) {
@@ -84,30 +93,13 @@ typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
     }
 }
 
-- (void)getAWSUser {
-    [[[[UserManager sharedManager].userPool currentUser] getSession:self.emailTextField.text password:self.passwordTextField.text validationData:nil] continueWithBlock:^id _Nullable(AWSTask<AWSCognitoIdentityUserSession *> * _Nonnull task) {
-        if (task.error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideAllHUDs];
-                if ([task.error.userInfo[@"message"] isEqualToString:@"User is not confirmed."]) {
-                    //alert and segue to confirm user with code
-                    NSLog(@"error: %@", task.error.localizedDescription);
-                } else {
-                    //silence other errors
-                }
-            });
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideAllHUDs];
-                NSLog(@"user: %@", [[UserManager sharedManager].userPool currentUser]);
-                [self.tableView reloadData];
-                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-            });
+- (void)authenticateUser {
 
-        }
-        return nil;
-    }];
+    self.passwordAuthenticationCompletion.result = [[AWSCognitoIdentityPasswordAuthenticationDetails alloc] initWithUsername:self.emailTextField.text password:self.passwordTextField.text];
+
+    [SVProgressHUD dismiss];
 }
+
 
 #pragma mark - ScrollView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -138,9 +130,88 @@ typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
 
 
 #pragma mark - Helpers
-- (void)setUpPool {
-    
+- (void)didCompletePasswordAuthenticationStepWithError:(NSError*) error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+
+        if(error){
+            CakeAlertViewController *errorAlert = [[CakeAlertViewController alloc] initWithAlertTitle:error.userInfo[@"__type"] message:error.userInfo[@"message"]];
+            NYAlertAction *cancelAction = [NYAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(NYAlertAction *action) {
+                [errorAlert dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [errorAlert addAction:cancelAction];
+            [self presentViewController:errorAlert animated:YES completion:nil];
+            return;
+        } else {
+            //dismiss view controller
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            [SVProgressHUD dismiss];
+        }
+    });
 }
+
+//-(id<AWSCognitoIdentityPasswordAuthentication>) startPasswordAuthentication{
+//    //implement code to instantiate and display login UI here
+//    //return something that implements the AWSCognitoIdentityPasswordAuthentication protocol
+//    return loginUI;
+//}
+
+- (void)getSession {
+    [[self.user getSession:self.emailTextField.text password:self.passwordTextField.text validationData:nil] continueWithBlock:^id _Nullable(AWSTask<AWSCognitoIdentityUserSession *> * _Nonnull task) {
+        if (task.error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                if ([task.error.userInfo[@"message"] isEqualToString:@"User is not confirmed."]) {
+                    CakeAlertViewController *verifyAlert = [[CakeAlertViewController alloc] initWithAlertTitle:@"Please verify user" message:@"You will be sent a verifcation code"];
+                    NYAlertAction *cancelAction = [NYAlertAction actionWithTitle:NSLocalizedString(@"Alert.Cancel", @"get string for ok") style:UIAlertActionStyleDefault handler:^(NYAlertAction *action) {
+                        [verifyAlert dismissViewControllerAnimated:YES completion:nil];
+                    }];
+                    NYAlertAction *sendAction = [NYAlertAction actionWithTitle:NSLocalizedString(@"Login.Alert.Resend", @"get string for resend code") style:UIAlertActionStyleDefault handler:^(NYAlertAction *action) {
+                        [verifyAlert dismissViewControllerAnimated:YES completion:nil];
+                        [SVProgressHUD show];
+
+                        [[self.user resendConfirmationCode] continueWithBlock:^id _Nullable(AWSTask<AWSCognitoIdentityUserResendConfirmationCodeResponse *> * _Nonnull task) {
+
+                            if (task.error) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [SVProgressHUD dismiss];
+                                    NSLog(@"error: %@", task.error.localizedDescription);
+                                });
+                            } else {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [SVProgressHUD dismiss];
+                                    [self performSegueWithIdentifier:kVerifySegue sender:self];
+                                });
+                            }
+                            return nil;
+                        }];
+                    }];
+                    [verifyAlert addAction:sendAction];
+                    [verifyAlert addAction:cancelAction];
+                    [self presentViewController:verifyAlert animated:YES completion:nil];
+                } else {
+                    CakeAlertViewController *errorAlert = [[CakeAlertViewController alloc] initWithAlertTitle:task.error.userInfo[@"__type"] message:task.error.userInfo[@"message"]];
+                    NYAlertAction *cancelAction = [NYAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(NYAlertAction *action) {
+                        [errorAlert dismissViewControllerAnimated:YES completion:nil];
+                    }];
+                    [errorAlert addAction:cancelAction];
+                    [self presentViewController:errorAlert animated:YES completion:nil];
+                }
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                [self.tableView reloadData];
+                // NSError *error;
+                //self.passwordAuthenticationCompletion.result = [[AWSCognitoIdentityPasswordAuthenticationDetails alloc] initWithUsername:self.emailTextField.text password:self.passwordTextField.text];
+                // [self didCompletePasswordAuthenticationStepWithError:error];
+            });
+
+        }
+        return nil;
+    }];
+}
+
 - (void)styleViews {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.iconRoundedView.layer.cornerRadius = self.iconRoundedView.frame.size.width / 2;
@@ -148,7 +219,7 @@ typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
     self.loginLabel.layer.cornerRadius = self.loginLabel.frame.size.height / 2;
     self.loginLabel.layer.masksToBounds = YES;
     if ([self.emailTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
-        self.emailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Login.Email", @"get string for email placeholder") attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+        self.emailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Login.Username", @"get string for email placeholder") attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
         self.emailTextField.floatingLabelTextColor = [UIColor blackColor];
         self.emailTextField.floatingLabelFont = [UIFont fontWithName:kDefaultFont size:15.0];
         self.emailTextField.floatingLabelActiveTextColor = [UIColor blackColor];
@@ -166,5 +237,15 @@ typedef NS_ENUM(NSUInteger, LoginSelectedStaticCell){
     [self.emailTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
 }
+
+-(void) getPasswordAuthenticationDetails: (AWSCognitoIdentityPasswordAuthenticationInput *) authenticationInput  passwordAuthenticationCompletionSource: (AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails *> *) passwordAuthenticationCompletionSource {
+    self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(!self.emailTextField.text)
+            self.emailTextField.text = authenticationInput.lastKnownUsername;
+    });
+
+}
+
 
 @end

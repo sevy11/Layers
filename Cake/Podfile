@@ -1,27 +1,20 @@
-# Uncomment this line to define a global platform for your project
- platform :ios, '8.0'
-# Uncomment this line if you're using Swift
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, ’8.4’
 use_frameworks!
 
 target 'Cake' do
-source "https://github.com/CocoaPods/Old-Specs"
-
-pod 'AWSCognito'
-pod 'AWSCognitoIdentityProvider'
-pod 'AWSDynamoDB'
-pod 'BPXLUUIDHandler', '~> 0.0'
-pod 'CocoaLumberjack', '~> 2.3'
-pod 'IQKeyboardManager'
-pod 'JGActionSheet'
-pod 'JVFloatLabeledTextField'
-pod 'MBProgressHUD', '~> 0.8'
-pod 'NYAlertViewController'
-pod 'MGSwipeTableCell', '~> 1.5'
-pod 'RESideMenu', '~> 4.0.7'
-pod 'RestKit'
-pod 'RKCLLocationValueTransformer'
-pod 'UITextField+Shake', '~> 1.1'
-pod 'YYWebImage'
+	pod 'AWSCognitoIdentityProvider', '~> 2.4.16'
+	pod 'AWSCore', '~> 2.4.16'
+	pod 'IQKeyboardManager'
+	pod 'JGActionSheet'
+	pod 'JVFloatLabeledTextField'
+	pod 'NYAlertViewController'
+	pod 'MGSwipeTableCell', '~> 1.5'
+	pod 'RESideMenu', '~> 4.0.7'
+	pod 'SVProgressHUD'
+	pod 'UITextField+Shake', '~> 1.1'
+	pod 'YYWebImage'
 end
 
 target 'CakeTests' do

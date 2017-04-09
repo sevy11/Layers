@@ -10,7 +10,6 @@
 #import "Config.h"
 #import <MGSwipeTableCell/MGSwipeTableCell.h>
 #import <MGSwipeTableCell/MGSwipeButton.h>
-#import "NSObject+ProgressHUD.h"
 #import <YYWebImage/YYWebImage.h>
 
 @interface CakeAbstractTableViewCell : MGSwipeTableCell

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AWSCognitoIdentityProvider.h"
 
-@interface VerificationCodeTableViewController : UITableViewController
+@interface VerificationCodeTableViewController : UITableViewController<AWSCognitoIdentityMultiFactorAuthentication>
 
 @property (nonatomic, nullable) AWSCognitoIdentityUser *user;
 
