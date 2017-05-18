@@ -8,9 +8,9 @@
 
 import Foundation
 /**
- A class entity representing an error that
- the API would return or an internal error
- in the application.
+    A class entity representing an error that
+    the API would return or an internal error
+    in the application.
  */
 final class LYError: Error {
 
@@ -22,17 +22,17 @@ final class LYError: Error {
     // MARK: - Initializers
 
     /**
-     Initializes an instance of `BaseError` with
-     a given status code and an error description.
+        Initializes an instance of `BaseError` with
+        a given status code and an error description.
 
-     - Parameters:
-     - statusCode: An `Int` representing the status
-     code of the response. The status
-     code would usually be within the
-     four hundred to five hundred.
-     - errorDescription: A `String` representing the
-     description of the error given
-     from the API.
+        - Parameters:
+            - statusCode: An `Int` representing the status
+                          code of the response. The status
+                          code would usually be within the
+                          four hundred to five hundred.
+            - errorDescription: A `String` representing the
+                                description of the error given
+                                from the API.
      */
     init(statusCode: Int, errorDescription: String) {
         self.statusCode = statusCode
@@ -45,16 +45,16 @@ final class LYError: Error {
 extension LYError {
 
     /**
-     Takes an error dictionary returned from the
-     API and gets the error description.
+    Takes an error dictionary returned from the
+    API and gets the error description.
 
-     - Parameters errorDictionary: An `[String: Any]` representing
-     the error dictionary returned from
-     the API.
+     - Parameters: errorDictionary: An `[String: Any]` representing
+                                      the error dictionary returned from
+                                      the API.
 
      - Returns: A `String` representing the error description. If the
-     dictionary can't be parsed, a default error description
-     will be returned.
+                dictionary can't be parsed, a default error description
+                will be returned.
      */
     class func errorDescriptionFromErrorDictionary(_ errorDictionary: [String: Any]) -> String {
         if let usernameErrors = errorDictionary["username"] as? [String],

@@ -27,12 +27,13 @@ class CreateAccountViewController: UIViewController {
 
         email = ""
         password = ""
+        confirm = ""
         if user?.displayName != nil {
             self.user = user!
         }
-        self.confirmTextField.delegate = self
-        self.passwordTextField.delegate = self
-        self.emailTextField.delegate = self
+        confirmTextField.delegate = self
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
     }
 
 
@@ -47,8 +48,7 @@ class CreateAccountViewController: UIViewController {
                 print("error: \(error)& \(strongSelf)")
             }
         } else {
-            print("password match error")
-            self.passwordTextField.performShakeAnimation()
+            //show alert for password matching
         }
     }
 
@@ -74,17 +74,17 @@ extension CreateAccountViewController: UITextFieldDelegate {
                 if isValidEmail(emailString: textField.text!) {
                     email = textField.text!
                 } else {
-                    self.emailTextField.performShakeAnimation()
+                    emailTextField.performShakeAnimation()
                 }
             } else {
-                self.emailTextField.performShakeAnimation()
+                emailTextField.performShakeAnimation()
             }
         } else if textField == passwordTextField {
             if textField.text != nil {
                 if (textField.text?.characters.count)! > 5 {
                     password = textField.text!
                 } else {
-                    self.passwordTextField.performShakeAnimation()
+                    passwordTextField.performShakeAnimation()
                 }
             }
         } else if textField == confirmTextField {

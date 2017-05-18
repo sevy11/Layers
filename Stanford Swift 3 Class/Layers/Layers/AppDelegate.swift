@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        /*
         _ = FacebookManager.shared
         _ = FacebookManager.shared.initializeDelegate(application: application, launchOptions: launchOptions)
 
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://evening-ocean-18307.herokuapp.com/"
         }
         Parse.initialize(with: configuration)
+            */
         FIRApp.configure()
         return true
     }

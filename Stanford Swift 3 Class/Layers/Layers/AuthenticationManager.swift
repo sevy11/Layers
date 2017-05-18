@@ -7,21 +7,23 @@
 //
 
 import Foundation
+import FirebaseAuth
+
 /**
- A singleton responsible for login, signup,
- social authentication, forgot password and
- change password operations.
+    A singleton responsible for login, signup,
+    social authentication, forgot password and
+    change password operations.
  */
 final class AuthenticationManager {
 
     // MARK: - Shared Instance
     static let shared = AuthenticationManager()
-
+    var user: FIRUser?
 
     // MARK: - Initializers
 
     /**
-     Initializes a shared instance of `AuthenticationManager`.
+        Initializes a shared instance of `AuthenticationManager`.
      */
     private init() {}
 }
@@ -34,15 +36,22 @@ extension AuthenticationManager {
      Logs in a user with a given email and password.
 
      - Parameters:
-     - email: A `String` representing the email of the user.
-     - password: A `String` representing the password of the user.
-     - success: A closure that gets invoked when logging in a user
-     was successful.
-     - failure: A closure that gets invoked when logging in a user
-     failed. Passes a `BaseError` object that contains the
-     error that occured.
+        - email: A `String` representing the email of the user.
+        - password: A `String` representing the password of the user.
+        - success: A closure that gets invoked when logging in a user was successful.
+        - failure: A closure that gets invoked when logging in a user failed. Passes 
+                   a `BaseError` object that contains the error that occured.
      */
-    func login(email: String, password: String, success: @escaping () -> Void, failure: @escaping (_ error: LYError) -> Void) {
+    func login(email: String, password: String, success: @escaping (_ user: FIRUser) -> Void, failure: @escaping (_ error: LYError) -> Void) {
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            if (user != nil) {
+                self.user = user
+                success(user!)
+            }
+            if (error != nil) {
+                failure(error as! LYError)
+            }
+        })
 //        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
 //        dispatchQueue.async {
 //            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)

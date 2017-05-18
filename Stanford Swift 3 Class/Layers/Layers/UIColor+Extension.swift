@@ -15,9 +15,9 @@ fileprivate extension UIColor {
      Gets the color from a given hexidecimal value.
 
      - Parameters:
-     - hexValue: An `UInt` representing the hexidecimal value.
-     - alpha: A `Float` representing how much alpha to apply.
-     Default value is 1.0.
+        - hexValue: An `UInt` representing the hexidecimal value.
+        - alpha: A `Float` representing how much alpha to apply.
+                 Default value is 1.0.
 
      - Returns: An `UIColor` object containing the color generated from `hexValue`.
      */
@@ -58,9 +58,9 @@ extension UIColor {
 
 // MARK: - Hex Value Constants
 extension UIColor {
-    @nonobjc static var mainHexValue: UInt = 0x003399
-    @nonobjc static var secondaryHexValue: UInt = 0xFFFFFF
-    @nonobjc static var teritaryHexValue: UInt = 0x8B0F04
+    @nonobjc static var mainHexValue: UInt = 0x3284BF
+    @nonobjc static var secondaryHexValue: UInt = 0xFFE86E
+    @nonobjc static var teritaryHexValue: UInt = 0x00A5E5
     @nonobjc static var tabbarHexValue: UInt = 0xE8E8E8
     @nonobjc static var fieldHexValue: UInt = 0x003300
     @nonobjc static var textHexValue: UInt = 0x4A4A4A

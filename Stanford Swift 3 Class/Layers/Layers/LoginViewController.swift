@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Parse
-import FirebaseAuth
+import Firebase
 
 class LoginViewController: UIViewController {
 
@@ -60,13 +59,6 @@ class LoginViewController: UIViewController {
     }
 }
 
-// MARK: - Navigation
-//extension LoginViewController {
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let todayViewController = segue.destination as? SignupPasswordViewController else { return }
-//        signupPasswordViewController.signUpViewModel = signUpViewModel!
-//    }
-//}
 
 // MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
@@ -125,16 +117,13 @@ fileprivate extension LoginViewController {
 
     /// Login With Firebase User
     fileprivate func logInWithEmail(email: String, password: String) {
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-            if (user != nil) {
-                print("fir user: \(String(describing: user))")
-                //segue to homescreen
-                return
-            }
-            if (error != nil) {
-                print("error: \(String(describing: error))")
-            }
-        })
+       AuthenticationManager.shared.login(email: email, password: password, success: { [weak self] (user) in
+            guard let strongSelf = self else { return }
+            strongSelf.dismiss(animated: true, completion: nil)
+       }) { [weak self] (error) in
+            guard let strongSelf = self else { return }
+            strongSelf.dismiss(animated: true, completion: nil)
+        }
     }
 
     func isValidEmail(emailString: String) -> Bool {
@@ -144,16 +133,3 @@ fileprivate extension LoginViewController {
     }
 
 }
-        //signup pfuser
-//        let user = PFUser()
-//        user.username = "sevy1"
-//        user.password = "test"
-//        user.email = "michaelsevy+1@gmail.com"
-//
-//        user.signUpInBackground(block: { (succeeded: Bool!, error: Error!) -> Void in
-//            if error == nil {
-//                print("user worked!!")
-//            } else {
-//                print("error: \(error)")
-//            }
-//        } as PFBooleanResultBlock)
