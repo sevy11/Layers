@@ -12,41 +12,38 @@ import FirebaseDatabase
 
 final class WeatherWearViewController: UIViewController {
 
-    var currentUser: FIRUser!
+    //var user: User?
+    //move to mangaer
     var ref: FIRDatabaseReference!
 
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let email = "michaelsevy@gmail.com"
-        let password = "sevymich"
-
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { [weak self] (user, error) in
-            guard let strongSelf = self else { return }
-            if (user != nil) {
-                strongSelf.currentUser = user!
-            }
-            if (error != nil) {
-                print("error: \(String(describing: error))")
-            }
-        })
- 
-
+        let user = FIRAuth.auth()?.currentUser
+        if let user = user {
+            print("****\(String(describing: user.email))")
+        }
     }
-
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ref = FIRDatabase.database().reference()
+//        user = FIRAuth.auth()?.currentUser as? User
+//        if (user != nil) {
+//            //call the weather api
+//            print("*****: \(String(describing: user?.email))")
+//        } else {
+//            print("NO")
+//            performSegue(withIdentifier: UIStoryboardSegue.goToLoginSegue, sender: self)
+//        }
+//        ref = FIRDatabase.database().reference()
     }
 
 
     //MARK: - View LifeCycle
     @IBAction func updateUser(_ sender: LYButton) {
-        let username = "Michael"
-        ref.child("users").child(currentUser.uid).setValue(["username": username])
+        //let username = "Michael"
+        //ref.child("users").child(currentUser.uid).setValue(["username": username])
     }
 
     @IBAction func otherAction(_ sender: LYButton) {

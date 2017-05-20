@@ -16,12 +16,14 @@ final class User: FIRUser {
 
 extension User {
 
-    var currentUser: String? {
-        get {
-            if let email = email {
-                return email
-            }
-            return nil
+    func authenticated() -> Bool {
+
+        if FIRAuth.auth()?.currentUser != nil {
+            return true
         }
+        return false
     }
+
+
+
 }

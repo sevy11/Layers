@@ -42,35 +42,47 @@ extension AuthenticationManager {
         - failure: A closure that gets invoked when logging in a user failed. Passes 
                    a `BaseError` object that contains the error that occured.
      */
-    func login(email: String, password: String, success: @escaping (_ user: FIRUser) -> Void, failure: @escaping (_ error: LYError) -> Void) {
+    func login(email: String, password: String, success: @escaping (_ user: FIRUser) -> Void, failure: @escaping (_ error: Error) -> Void) {
+//        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user: FIRUser, error: NSError) in
+//            if (user) {
+//                success(user)
+//            } if (error) {
+//                failure(error)
+//            }
+//        } as! FIRAuthResultCallback)
+
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             if (user != nil) {
-                self.user = user
                 success(user!)
             }
             if (error != nil) {
-                failure(error as! LYError)
+                failure(error!)
             }
         })
-//        let dispatchQueue = DispatchQueue.global(qos: .userInitiated)
-//        dispatchQueue.async {
-//            let networkClient = NetworkClient(baseUrl: ConfigurationManager.shared.apiUrl!, manageObjectContext: CoreDataStack.shared.managedObjectContext)
-//            networkClient.enqueue(AuthenticationEndpoint.login(email: email, password: password))
-//                .then(on: dispatchQueue, execute: { (loginResponse: LoginResponse) in
-//                    SessionManager.shared.authorizationToken = loginResponse.token
-//                    return networkClient.enqueue(AuthenticationEndpoint.currentUser)
-//                })
-//                .then(on: dispatchQueue, execute: { (user: User) -> Void in
-//                    SessionManager.shared.currentUser = MultiDynamicBinder(user)
-//                })
-//                .then(on: DispatchQueue.main, execute: {
-//                    success()
-//                })
-//                .catchAPIError(on: DispatchQueue.main, policy: .allErrors, execute: { (error: BaseError) in
-//                    failure(error)
-//                })
-//        }
+
+
     }
+    /**
+        Logs in a user with a given email and password.
+
+         - Parameters:
+            - email: A `String` representing the email of the user.
+            - password: A `String` representing the password of the user.
+            - success: A closure that gets invoked when logging in a user was successful.
+            - failure: A closure that gets invoked when logging in a user failed. Passes
+                       a `BaseError` object that contains the error that occured.
+    */
+    func createUser(email: String, password: String, success: @escaping (_ user: FIRUser) -> Void, failure: @escaping (_ error: Error) -> Void) {
+            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                if (user != nil) {
+                    self.user = user
+                    success(user!)
+                }
+                if (error != nil) {
+                    failure(error!)
+                }
+            })
+        }
 
     /**
      Signs up a new user.

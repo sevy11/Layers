@@ -89,6 +89,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Layers" id="Xlz-fy-txU"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LoginSegue" modalTransitionStyle="flipHorizontal" id="K8b-D5-DlX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbH-dO-0No" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,6 +152,11 @@
                                         <state key="normal" title="Log On">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="baseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Exv-Oz-Ycq"/>
                                         </connections>
@@ -187,7 +195,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -200,6 +208,11 @@
                                         <state key="normal" title="Forgot Password">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="baseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H99-fP-Ysh"/>
                                         </connections>
@@ -220,17 +233,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZkY-0i-fS5">
                                 <rect key="frame" x="0.0" y="393.5" width="375" height="100.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKp-Ki-ffI" customClass="LYButton" customModule="Layers" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="27" width="339" height="46"/>
-                                        <state key="normal" image="facebook-login-long"/>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKp-Ki-ffI" customClass="LYButton" customModule="Layers" customModuleProvider="target">
+                                        <rect key="frame" x="64" y="30.5" width="247" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="nZV-gF-xMN"/>
+                                            <constraint firstAttribute="width" constant="247" id="shK-bb-dAN"/>
+                                        </constraints>
+                                        <state key="normal" image="login-facebook"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="QKp-Ki-ffI" firstAttribute="centerX" secondItem="ZkY-0i-fS5" secondAttribute="centerX" id="5aV-xH-P2y"/>
-                                    <constraint firstItem="QKp-Ki-ffI" firstAttribute="leading" secondItem="ZkY-0i-fS5" secondAttribute="leading" constant="18" id="ND2-qo-iiU"/>
                                     <constraint firstItem="QKp-Ki-ffI" firstAttribute="centerY" secondItem="ZkY-0i-fS5" secondAttribute="centerY" id="QWV-Se-fE8"/>
-                                    <constraint firstAttribute="trailing" secondItem="QKp-Ki-ffI" secondAttribute="trailing" constant="18" id="osC-so-aVC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -431,6 +446,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="facebook-login-long" width="300" height="46"/>
+        <image name="login-facebook" width="988" height="160"/>
     </resources>
 </document>

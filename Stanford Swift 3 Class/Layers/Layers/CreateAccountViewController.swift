@@ -39,19 +39,13 @@ class CreateAccountViewController: UIViewController {
 
     @IBAction func createAccountTapped(_ sender: LYButton) {
         if self.passwordsMatch {
-            createAccountWithEmail(email: email, password: password, { [weak self] (firebaseUser: FIRUser) in
-                guard let strongSelf = self else { return }
-                strongSelf.user = firebaseUser
-                
-            }) { [weak self] (error: LYError) in
-                guard let strongSelf = self else { return }
-                print("error: \(error)& \(strongSelf)")
-            }
-        } else {
-            //show alert for password matching
+            AuthenticationManager.shared.createUser(email: email, password: password, success: { (user) in
+                print("user: \(user)")
+            }, failure: { (error) in
+                print("error: \(error)")
+            })
         }
     }
-
 }
 
 // MARK: - UITextFieldDelegate
@@ -122,27 +116,9 @@ fileprivate extension CreateAccountViewController {
 // MARK: - Private Instance Methods
 fileprivate extension CreateAccountViewController {
 
-    fileprivate func createAccountWithEmail(email: String, password: String, _ success: @escaping (FIRUser) -> Void, failure: @escaping (_ error: LYError) -> Void) {
-
-        //should put all this in FIR account manager
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-            //var strongSelf = self else { return }
-            if (user != nil) {
-                print("user: \(user!)")
-                success(user!)
-            }
-            if (error != nil) {
-                print("error: \(error!)")
-                failure(error as! LYError)
-            }
-        })
-
-    }
-
     func isValidEmail(emailString: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: emailString)
     }
-    
 }

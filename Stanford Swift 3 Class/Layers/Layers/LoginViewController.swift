@@ -93,8 +93,6 @@ extension LoginViewController: UITextFieldDelegate {
             }
         }
     }
-
-
 }
 
 
@@ -106,12 +104,6 @@ extension LoginViewController {
 }
 
 
-// MARK: - IBActions
-fileprivate extension LoginViewController {
-
-}
-
-
 // MARK: - Private Instance Methods
 fileprivate extension LoginViewController {
 
@@ -119,6 +111,7 @@ fileprivate extension LoginViewController {
     fileprivate func logInWithEmail(email: String, password: String) {
        AuthenticationManager.shared.login(email: email, password: password, success: { [weak self] (user) in
             guard let strongSelf = self else { return }
+            strongSelf.user = user
             strongSelf.dismiss(animated: true, completion: nil)
        }) { [weak self] (error) in
             guard let strongSelf = self else { return }
